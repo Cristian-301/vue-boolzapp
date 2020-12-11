@@ -1,0 +1,151 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+}
+
+#background {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, #009688 20%, #DBDBD5 20%);
+}
+
+#container {
+  width: 80%;
+  height: 90%;
+  display: flex;
+  background-color: white;
+}
+
+#contacts {
+  width: 40%;
+  height: 100%;
+  /* background-color: lightyellow; */
+}
+
+#user {
+  display: flex;
+  height: 50px;
+  background-color: #EAEAEA;
+}
+#user_avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35%;
+  height: 100%;
+
+}
+#user_avatar > img {
+  height: 80%;
+  border-radius: 50%;
+}
+#user_avatar > p {
+  margin-left: 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#nav_user {
+  width: 65%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+#nav_user > i {
+  margin-right: 10px;
+  color: #B1B1B1;
+}
+
+#notifications {
+  height: 70px;
+  background-color: #8EDAFD;
+}
+
+#notif_bell {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+#notif_bell > i {
+  background-color: white;
+  border-radius: 50%;
+  padding: 10px;
+  font-size: 20px;
+  color: #8EDAFD;
+}
+
+#notif_text {
+  margin-left: 10px;
+}
+#notif_text h3 {
+  font-size: 12px;
+
+}
+#notif_text p {
+  font-size: 10px;
+  text-decoration: underline;
+  color: #6C97A5;
+}
+
+#search {
+  height: 30px;
+  background-color: #FAFAFA;
+  line-height: 30px;
+}
+#search > input {
+  width: 80%;
+  padding: 5px 20px;
+  border: none;
+}
+#search > i {
+  margin-left: 10px;
+  background-color: white;
+  padding: 5px 20px;
+  text-align: center;
+  color: #D1C7C1;
+}
+
+.contact {
+  display: flex;
+  height: 70px;
+  background-color: white;
+}
+
+.avatar {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: coral; */
+}
+.avatar > img {
+  height: 100%;
+  /* width: 100%; */
+  border-radius: 50%;
+  padding: 10px;
+
+}
+
+.contact_name {
+  width: 80%;
+  margin-top: 10px;
+  /* background-color: pink; */
+}
+
+
+/* ------------ */
+
+#messages{
+  width: 60%;
+  height: 100%;
+  background-color: lightblue;
+}
