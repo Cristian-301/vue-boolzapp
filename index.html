@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <title>BoolZapp</title>
   </head>
   <body>
@@ -37,12 +38,13 @@
             <input type="text" name="" value="" placeholder="Crea o inzia una nuova chat">
           </div>
           <div id="chatusers">
-            <div class="contact">
+            <div class="contact" v-for="contact in contacts">
               <div class="avatar">
-                <img src="https://i.pinimg.com/originals/30/24/f8/3024f8d283b734bd6b7e4fc5531fe2e9.png" alt="">
+                <img :src="contact.avatar" alt="">
               </div>
               <div class="contact_name">
-                <p><strong>Liz</strong></p>
+                <p><strong>{{ contact.name }}</strong></p>
+                <p id="last_message">last message</p>
               </div>
             </div>
           </div>
@@ -51,10 +53,27 @@
 
         <div id="messages">
           <div id="current_contact">
+            <div id="current_avatar">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUH9wbHfLKLZ3cX50Atk1Imdb8VBR0erRJiA&usqp=CAU" alt="">
+              <div id="current_info">
+                <p id="nome">User Name</p>
+                <p id="ultimo_accesso">Ultimo acesso oggi alle...</p>
+              </div>
 
+            </div>
+            <div id="current_user">
+              <i class="fas fa-search"></i>
+              <i class="fas fa-paperclip"></i>
+              <i class="fas fa-ellipsis-v"></i>
+            </div>
           </div>
           <div id="text_window">
 
+          </div>
+          <div id="send">
+            <i class="far fa-smile"></i>
+            <input type="text" name="" value="" placeholder="Scrivi un messaggio">
+            <i class="fas fa-microphone"></i>
           </div>
         </div>
 

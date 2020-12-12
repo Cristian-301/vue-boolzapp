@@ -119,6 +119,7 @@ body {
   display: flex;
   height: 70px;
   background-color: white;
+  border-top: 1px solid #E9EBEB;
 }
 
 .avatar {
@@ -142,6 +143,11 @@ body {
   /* background-color: pink; */
 }
 
+#last_message {
+  font-size: 12px;
+  color: lightgray;
+}
+
 
 /* ------------ */
 
@@ -153,11 +159,55 @@ body {
 
 #current_contact {
   height: 10%;
+  display: flex;
   background-color: #EAEAEA;
 }
 
 #text_window {
-  height: 90%;
+  height: 80%;
   background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/12ee6265-e947-474a-a378-6d78ab0d1117/d8fr7iz-082cab4c-3f87-47e1-b2f0-efdb504372e5.jpg/v1/fill/w_1024,h_576,q_75,strp/super_hero_whatsapp_background_by_x_ama_d8fr7iz-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD01NzYiLCJwYXRoIjoiXC9mXC8xMmVlNjI2NS1lOTQ3LTQ3NGEtYTM3OC02ZDc4YWIwZDExMTdcL2Q4ZnI3aXotMDgyY2FiNGMtM2Y4Ny00N2UxLWIyZjAtZWZkYjUwNDM3MmU1LmpwZyIsIndpZHRoIjoiPD0xMDI0In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.vMsSrJL87xcHSN4_yT8cSlEGqymaknC5rvamCRrnlGU");
   background-size: cover;
+}
+
+#send {
+  height: 10%;
+  justify-content: space-around;
+  display: flex;
+  align-items: center;
+  background-color: #F3EEEA;
+}
+#send > input {
+  width: 80%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+#current_avatar {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+#current_avatar > img {
+  height: 80%;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+#ultimo_accesso {
+  font-size: 10px;
+}
+
+#current_user {
+  width: 60%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+#current_user i {
+  margin-right: 10px;
+  color: #B1B1B1;
 }
