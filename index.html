@@ -57,7 +57,7 @@
               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUH9wbHfLKLZ3cX50Atk1Imdb8VBR0erRJiA&usqp=CAU" alt="">
               <div id="current_info">
                 <p id="nome">User Name</p>
-                <p id="ultimo_accesso">Ultimo acesso oggi alle...</p>
+                <p id="ultimo_accesso">Ultimo accesso oggi alle...</p>
               </div>
 
             </div>
@@ -68,7 +68,22 @@
             </div>
           </div>
           <div id="text_window">
+            <div id="text_container">
+              <div class="sent float-right">
+                <div class="sent_message" v-for="item in contacts[0].messages">
+                  <p class="text" v-if="item.status === 'sent'">{{item.text}}</p>
+                  <p class="date">data corrente</p>
+                </div>
+              </div>
 
+              <div class="recived float-left">
+                <div class="recived_message">
+                  <p class="text">Message recived</p>
+                  <p class="date">22/10/2022 10:00:00</p>
+                </div>
+              </div>
+
+            </div>
           </div>
           <div id="send">
             <i class="far fa-smile"></i>

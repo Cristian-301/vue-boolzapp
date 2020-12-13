@@ -169,6 +169,66 @@ body {
   background-size: cover;
 }
 
+#text_container {
+  width: 80%;
+  height: 100%;
+  margin: auto;
+  /* border: 1px solid blue; */
+  padding-top: 20px;
+}
+
+.sent {
+  width: 50%;
+
+}
+.float-right {
+  float: right;
+}
+
+.sent_message {
+  height: 45px;
+  min-width: 200px;
+  max-width: 300px;
+  position: relative;
+  padding: 0 10px;
+  background-color: #D5F9BA;
+  border-radius: 10px;
+  margin-bottom: 10px;
+
+}
+.text {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+}
+.date {
+  position: absolute;
+  right: 5px;
+  bottom: 2px;
+  font-size: 8px;
+  color: lightgray;
+}
+
+.recived {
+  width: 100%;
+
+}
+.float-left {
+  float: left;
+}
+
+.recived_message {
+  height: 45px;
+  /* min-width: 200px; */
+  max-width: 200px;
+  position: relative;
+  padding: 0 10px;
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
 #send {
   height: 10%;
   justify-content: space-around;
