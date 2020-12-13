@@ -70,15 +70,15 @@
           <div id="text_window">
             <div id="text_container">
               <div class="sent float-right">
-                <div class="sent_message" v-for="item in contacts[0].messages">
-                  <p class="text" v-if="item.status === 'sent'">{{item.text}}</p>
+                <div class="sent_message" v-if="item.status === 'sent'" v-for="item in contacts[0].messages">
+                  <p class="text" >{{item.text}}</p>
                   <p class="date">data corrente</p>
                 </div>
               </div>
 
-              <div class="recived float-left">
+              <div class="recived float-left" v-if="item.status === 'received'" v-for="item in contacts[0].messages">
                 <div class="recived_message">
-                  <p class="text">Message recived</p>
+                  <p class="text">{{item.text}}</p>
                   <p class="date">22/10/2022 10:00:00</p>
                 </div>
               </div>
