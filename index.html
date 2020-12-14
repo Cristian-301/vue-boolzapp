@@ -43,7 +43,7 @@
                 <img :src="contact.avatar" alt="">
               </div>
               <div class="contact_name">
-                <p><strong>{{ contact.name }} {{ index }}</strong></p>
+                <p><strong>{{ contact.name }}</strong></p>
                 <p id="last_message">last message</p>
               </div>
             </div>
@@ -83,7 +83,9 @@
           </div>
           <div id="send">
             <i class="far fa-smile"></i>
-            <input type="text" name="" value="" placeholder="Scrivi un messaggio">
+            <input type="text" name="" value="" placeholder="Scrivi un messaggio"
+            v-model="newMessage"
+            @keydown.enter="sendText([contactIndex])">
             <i class="fas fa-microphone"></i>
           </div>
         </div>
