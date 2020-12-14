@@ -10,6 +10,7 @@ var app = new Vue({
 
   el: '#container',
   data: {
+    contactIndex: 0,
     contacts: [
 	{
 		name: 'Michele',
@@ -97,6 +98,13 @@ var app = new Vue({
 ]
 
 
+},
+  methods: {
+    changeContact: function(index) {
+
+    this.contactIndex = index;
+
+    }
   }
 
 });

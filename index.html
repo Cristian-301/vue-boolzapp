@@ -38,12 +38,12 @@
             <input type="text" name="" value="" placeholder="Crea o inzia una nuova chat">
           </div>
           <div id="chatusers">
-            <div class="contact" v-for="contact in contacts">
+            <div class="contact" v-for="(contact, index) in contacts" @click="changeContact(index)">
               <div class="avatar">
                 <img :src="contact.avatar" alt="">
               </div>
               <div class="contact_name">
-                <p><strong>{{ contact.name }}</strong></p>
+                <p><strong>{{ contact.name }} {{ index }}</strong></p>
                 <p id="last_message">last message</p>
               </div>
             </div>
@@ -68,7 +68,7 @@
             </div>
           </div>
           <div id="text_window">
-            <div id="messages_window" v-for="contact in contacts[0].messages">
+            <div id="messages_window" v-for="contact in contacts[contactIndex].messages">
               <div class="sent" v-if="contact.status === 'sent'">
                 <p class="text">{{contact.text}}</p>
                 <p class="date">{{contact.date}}</p>
