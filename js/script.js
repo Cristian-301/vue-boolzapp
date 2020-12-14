@@ -108,19 +108,28 @@ var app = new Vue({
 
     this.contactIndex = index;
 
-  },
+    },
 
     sendText: function (index) {
       this.contacts[index].messages.push({
 				date: '10/01/2020 15:30:55',
 				text: this.newMessage,
 				status: 'sent'
-			},
-
-
-      )
+			})
       this.newMessage = "";
+    },
+
+    response: function (index) {
+      var resp = this.contacts[index].messages;
+      setTimeout(function(){
+        resp.push({
+  				date: '10/01/2020 15:30:55',
+  				text: 'ok',
+  				status: 'received'
+  			})
+      }, 1000);
     }
+
   }
 
 });
