@@ -165,6 +165,7 @@ body {
 
 #text_window {
   height: 80%;
+  padding: 20px;
   background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/12ee6265-e947-474a-a378-6d78ab0d1117/d8fr7iz-082cab4c-3f87-47e1-b2f0-efdb504372e5.jpg/v1/fill/w_1024,h_576,q_75,strp/super_hero_whatsapp_background_by_x_ama_d8fr7iz-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD01NzYiLCJwYXRoIjoiXC9mXC8xMmVlNjI2NS1lOTQ3LTQ3NGEtYTM3OC02ZDc4YWIwZDExMTdcL2Q4ZnI3aXotMDgyY2FiNGMtM2Y4Ny00N2UxLWIyZjAtZWZkYjUwNDM3MmU1LmpwZyIsIndpZHRoIjoiPD0xMDI0In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.vMsSrJL87xcHSN4_yT8cSlEGqymaknC5rvamCRrnlGU");
   background-size: cover;
 }
@@ -172,61 +173,47 @@ body {
 #text_container {
   width: 80%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   margin: auto;
-  /* border: 1px solid blue; */
   padding-top: 20px;
 }
 
-.sent {
-  width: 50%;
-
-}
-.float-right {
-  float: right;
+#messages_window {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
-.sent_message {
-  height: 45px;
-  min-width: 200px;
-  max-width: 300px;
-  position: relative;
-  padding: 0 10px;
-  background-color: #D5F9BA;
+#messages_window div {
+  width: 250px;
+  margin: 10px;
   border-radius: 10px;
-  margin-bottom: 10px;
-
 }
+
+.sent {
+  position: relative;
+  padding: 10px;
+  background-color: #D5F9BA;
+}
+.recived {
+  align-self: flex-start;
+  position: relative;
+  padding: 10px;
+  background-color: white;
+}
+
 .text {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   font-size: 12px;
 }
+
 .date {
   position: absolute;
-  right: 5px;
-  bottom: 2px;
+  right: 3px;
+  bottom: 3px;
   font-size: 8px;
-  color: lightgray;
-}
-
-.recived {
-  width: 100%;
-
-}
-.float-left {
-  float: left;
-}
-
-.recived_message {
-  height: 45px;
-  /* min-width: 200px; */
-  max-width: 200px;
-  position: relative;
-  padding: 0 10px;
-  background-color: white;
-  border-radius: 10px;
-  margin-bottom: 10px;
+  color: #BEC9BA;
 }
 
 #send {
