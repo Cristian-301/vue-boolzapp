@@ -102,8 +102,7 @@ var app = new Vue({
 			}
 		],
 	},
-]
-
+],
 
 },
   methods: {
@@ -120,18 +119,27 @@ var app = new Vue({
 				status: 'sent'
 			})
       this.newMessage = "";
-    },
 
-    response: function (index) {
       var resp = this.contacts[index].messages;
       setTimeout(function(){
         resp.push({
-  				date: dayjs().format("DD/MM/YYYY HH:mm:ss"),
-  				text: 'ok',
-  				status: 'received'
-  			})
+          date: dayjs().format("DD/MM/YYYY HH:mm:ss"),
+          text: 'ok',
+          status: 'received'
+        })
       }, 1000);
     },
+
+    searchContact: function() {
+				this.contacts.forEach(
+					(element) => {
+						element.visible = false;
+						if (element.name.includes(this.search)) {
+							element.visible = true;
+						}
+					}
+				);
+			}
 
   },
 
