@@ -35,20 +35,26 @@
             </div>
           </div>
           <div id="search" >
-            <i class="fas fa-search"></i>
+            <i class="fas fa-search" @click="searchContact"></i>
             <input type="text" name="" value="" placeholder="Crea o inzia una nuova chat"
 
-            v-model="search" @keydown.enter="searchContact">
+            v-model="search" @keyup="searchContact">
           </div>
           <div id="chatusers">
-            <div class="contact" v-for="(contact, index) in contacts" @click="changeContact(index)"
-            v-if="contact.visible" :class="(index == contactIndex) ? 'active' : ''">
+            <div class="contact"
+            v-for="(contact, index) in contacts"
+            @click="changeContact(index), openContact()"
+            v-if="contact.visible"
+            
+            :class="(index == contactIndex) ? 'active' : ''">
               <div class="avatar">
                 <img :src="contact.avatar" alt="">
               </div>
-              <div class="contact_name">
+              <div class="contact_name" v-if>
                 <p><strong>{{ contact.name }}</strong></p>
-                <p id="last_message">last message</p>
+                <span id="message_date">last seen {{ contact.messages[contact.messages.length - 1].date }}</span>
+
+                <p id="last_message">{{ contact.messages[contact.messages.length - 1].text }}</p>
               </div>
             </div>
           </div>
@@ -56,30 +62,44 @@
 
 
         <div id="messages">
+
           <div id="current_contact">
-            <div id="current_avatar">
+            <div id="current_avatar" v-if="activeContact">
               <img :src="contacts[contactIndex].avatar" alt="">
               <div id="current_info">
                 <p id="nome">{{contacts[contactIndex].name}}</p>
-                <p id="ultimo_accesso">Ultimo accesso oggi alle...</p>
+                <p id="ultimo_accesso">Ultimo accesso oggi alle {{ contacts[contactIndex].messages[contacts[contactIndex].messages.length - 1].date }}</p>
+                <span @click="closeChat()" id="exit_contact">x</span>
               </div>
-
             </div>
+
             <div id="current_user">
               <i class="fas fa-search"></i>
               <i class="fas fa-paperclip"></i>
               <i class="fas fa-ellipsis-v"></i>
             </div>
           </div>
+
           <div id="text_window">
-            <div id="messages_window" v-for="contact in contacts[contactIndex].messages">
-              <div class="sent" v-if="contact.status === 'sent'">
-                <p class="text">{{contact.text}}</p>
-                <p class="date">{{contact.date}}</p>
+            <div id="messages_window" v-for="(message, index) in contacts[contactIndex].messages" v-if="activeContact">
+              <div class="sent" v-if="message.status === 'sent'">
+                <!-- <button @click="scrollBottom()">click</button> -->
+                <p class="text">{{message.text}}</p>
+                <p class="date">{{message.date}}</p>
+                <span class="del" @click="toggleDrop(message)"><i class="fas fa-chevron-down"></i></span>
+                <div v-if="message.active === true" class="drop">
+                  <p>Contact info</p>
+                  <p @click="deleteMessage(contactIndex, index)">Delete</p>
+                </div>
               </div>
-              <div class="recived" v-if="contact.status === 'received'">
-                <p class="text"> {{contact.text}}</p>
-                <p class="date"> {{contact.date}}</p>
+              <div class="recived" v-if="message.status === 'received'">
+                <p class="text"> {{message.text}}</p>
+                <p class="date"> {{message.date}}</p>
+                <span class="del" @click="toggleDrop(message)" ><i class="fas fa-chevron-down"></i></span>
+                <div v-if="message.active === true" class="drop">
+                  <p>Contact info</p>
+                  <p @click="deleteMessage(contactIndex, index)">Delete</p>
+                </div>
               </div>
 
             </div>

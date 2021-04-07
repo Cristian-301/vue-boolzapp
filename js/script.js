@@ -15,9 +15,10 @@ var app = new Vue({
 
   el: '#container',
   data: {
+		activeContact: true,
     search: "",
     newMessage: "",
-    contactIndex: 0,
+		contactIndex: 0,
     contacts: [
 	{
 		name: 'Michele',
@@ -25,19 +26,22 @@ var app = new Vue({
 		visible: true,
 		messages: [
 			{
-				date: '10/01/2020 15:30:55',
+				date: '15:30:55',
 				text: 'Hai portato a spasso il cane?',
-				status: 'sent'
+				status: 'sent',
+				active: false,
 			},
 			{
-				date: '10/01/2020 15:50:00',
+				date: '15:50:00',
 				text: 'Ricordati di dargli da mangiare',
-				status: 'sent'
+				status: 'sent',
+				active: false,
 			},
 			{
-				date: '10/01/2020 16:15:22',
+				date: '16:15:22',
 				text: 'Tutto fatto!',
-				status: 'received'
+				status: 'received',
+				active: false,
 			}
 		],
 	},
@@ -47,19 +51,22 @@ var app = new Vue({
 		visible: true,
 		messages: [
 			{
-				date: '20/03/2020 16:30:00',
+				date: '16:30:00',
 				text: 'Ciao come stai?',
-				status: 'sent'
+				status: 'sent',
+				active: false,
 			},
 			{
-				date: '20/03/2020 16:30:55',
+				date: '16:30:55',
 				text: 'Bene grazie! Stasera ci vediamo?',
-				status: 'received'
+				status: 'received',
+				active: false,
 			},
 			{
-				date: '20/03/2020 16:35:00',
+				date: '16:35:00',
 				text: 'Mi piacerebbe ma devo andare a fare la spesa.',
-				status: 'sent'
+				status: 'sent',
+				active: false,
 			}
 		],
 	},
@@ -69,19 +76,22 @@ var app = new Vue({
 		visible: true,
 		messages: [
 			{
-				date: '28/03/2020 10:10:40',
+				date: '10:10:40',
 				text: 'La Marianna va in campagna',
-				status: 'received'
+				status: 'received',
+				active: false,
 			},
 			{
-				date: '28/03/2020 10:20:10',
+				date: '10:20:10',
 				text: 'Sicuro di non aver sbagliato chat?',
-				status: 'sent'
+				status: 'sent',
+				active: false,
 			},
 			{
-				date: '28/03/2020 16:15:22',
+				date: '16:15:22',
 				text: 'Ah scusa!',
-				status: 'received'
+				status: 'received',
+				active: false,
 			}
 		],
 	},
@@ -91,14 +101,35 @@ var app = new Vue({
 		visible: true,
 		messages: [
 			{
-				date: '10/01/2020 15:30:55',
+				date: '15:30:55',
 				text: 'Lo sai che ha aperto una nuova pizzeria?',
-				status: 'sent'
+				status: 'sent',
+				active: false,
 			},
 			{
-				date: '10/01/2020 15:50:00',
+				date: '15:50:00',
 				text: 'Si, ma preferirei andare al cinema',
-				status: 'received'
+				status: 'received',
+				active: false,
+			}
+		],
+	},
+	{
+		name: 'Mark',
+		avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7S9pKMslch4WjEcuH1FTueBDvu3nL4NTsNg&usqp=CAU',
+		visible: true,
+		messages: [
+			{
+				date: '17:22:55',
+				text: 'Cosa fai questo pomeriggio?',
+				status: 'sent',
+				active: false,
+			},
+			{
+				date: '15:50:00',
+				text: 'Pnesavo di andare a nuotare',
+				status: 'received',
+				active: false,
 			}
 		],
 	},
@@ -106,6 +137,30 @@ var app = new Vue({
 
 },
   methods: {
+
+		closeChat: function() {
+			this.activeContact = !this.activeContact
+		},
+
+		openContact: function() {
+			this.activeContact = true
+		},
+
+		// scrollBottom: function() {
+		// 	var text_window = document.getElementById("messages_window").innerHTML;
+		// 	console.log(text_window)
+
+		// 	// window.open()
+		// },
+
+		toggleDrop: function(message) {
+			message.active = !message.active
+		},
+
+		deleteMessage: function(contactIndex, index) {
+			this.contacts[contactIndex].messages.splice(index, 1)
+		},
+
     changeContact: function(index) {
 
     this.contactIndex = index;
@@ -114,27 +169,31 @@ var app = new Vue({
 
     sendText: function (index) {
       this.contacts[index].messages.push({
-				date: dayjs().format("DD/MM/YYYY HH:mm:ss") ,
+				date: dayjs().format("HH:mm:ss") ,
 				text: this.newMessage,
-				status: 'sent'
+				status: 'sent',
+				active: false,
 			})
+			
       this.newMessage = "";
 
       var resp = this.contacts[index].messages;
       setTimeout(function(){
         resp.push({
-          date: dayjs().format("DD/MM/YYYY HH:mm:ss"),
-          text: 'ok',
-          status: 'received'
+          date: dayjs().format("HH:mm:ss"),
+          text: 'Ok',
+					status: 'received',
+					active: false,
         })
-      }, 1000);
-    },
+			}, 1000);
+		},
+		
 
     searchContact: function() {
 				this.contacts.forEach(
 					(element) => {
 						element.visible = false;
-						if (element.name.includes(this.search)) {
+						if (element.name.toLowerCase().includes(this.search.toLowerCase())) {
 							element.visible = true;
 						}
 					}
